@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors - Padronizando os azuis */
+  --color-primary: var(--color-blue-600);
+  --color-primary-hover: var(--color-blue-700);
+  --color-accent: var(--color-cyan-400);
+
+  /* Text Colors */
+  --color-text-main: var(--color-slate-900);
+  --color-text-muted: var(--color-slate-600);
+  --color-text-dark-main: var(--color-white);
+  --color-text-dark-muted: var(--color-slate-400);
+
+  /* Backgrounds */
+  --color-bg-light: var(--color-white);
+  --color-bg-dark: var(--color-slate-950);
+  --color-surface-light: var(--color-slate-50);
+  --color-surface-dark: var(--color-slate-900);
+
+  /* Borders */
+  --color-border-light: var(--color-slate-200);
+  --color-border-dark: var(--color-slate-800);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family:
+      "Inter",
+      system-ui,
+      -apple-system,
+      sans-serif;
+  }
+
+  body {
+    @apply bg-bg-light text-text-main dark:bg-bg-dark dark:text-text-dark-main antialiased;
+  }
+
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply tracking-tight font-bold;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+  will-change: transform;
+}
+
+.group:hover .animate-marquee {
+  animation-play-state: paused;
+}
+
+/* Remova ou comente isso se quiser que a scrollbar apareça sempre */
+body {
+  /* overflow: hidden; <--- Isso esconderia a barra */
+  overflow-y: scroll; /* Isso força a barra a aparecer mesmo sem conteúdo */
+}
