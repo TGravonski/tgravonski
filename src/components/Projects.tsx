@@ -1,4 +1,5 @@
 import { ExternalLink, Github, Layers } from 'lucide-react';
+import VinceCred from '../assets/vincecred.webp';
 
 const projects = [
   {
@@ -6,7 +7,7 @@ const projects = [
     category: "Site Institucional",
     description: "Projeto de um site institucional para empresa de crédito, focado em apresentar serviços e captar leads.",
     tech: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "PHP", "MySQL"],
-    image: "../../public/assets/vincecred.webp",
+    image: VinceCred,
     link: "https://youtu.be/gngFEFeKFUA",
     github: "#"
   },
@@ -15,7 +16,7 @@ const projects = [
     category: "Site Institucional",
     description: "Projeto de um site institucional para agência de marketing digital, com foco em apresentar portfólio e serviços.",
     tech: ["Figma", "HTML", "CSS", "JavaScript", "PHP", "Tailwind CSS"],
-    image: "../../public/assets/delphos.webp",
+    image: "src/assets/delphos.webp",
     link: "https://youtu.be/NVI-dJD8Tnk",
     github: "#"
   },
@@ -24,7 +25,7 @@ const projects = [
     category: "Site Institucional",
     description: "Site institucional com layout profissional e otimizado para conversão.",
     tech: ["Figma", "HTML", "CSS", "JavaScript", "PHP", "Tailwind CSS"],
-    image: "../../public/assets/bolini.webp",
+    image: "src/assets/bolini.webp",
     link: "https://youtu.be/R5NEQZv_bOE",
     github: "#"
   },
