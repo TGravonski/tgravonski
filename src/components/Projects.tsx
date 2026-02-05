@@ -1,5 +1,8 @@
 import { ExternalLink, Github, Layers } from 'lucide-react';
 import VinceCred from '../assets/vincecred.webp';
+import Delphos from '../assets/delphos.webp';
+import Bolini from '../assets/bolini.webp';
+import XPTO from '../assets/xpto.webp';
 
 const projects = [
   {
@@ -16,7 +19,7 @@ const projects = [
     category: "Site Institucional",
     description: "Projeto de um site institucional para agência de marketing digital, com foco em apresentar portfólio e serviços.",
     tech: ["Figma", "HTML", "CSS", "JavaScript", "PHP", "Tailwind CSS"],
-    image: "src/assets/delphos.webp",
+    image: Delphos,
     link: "https://youtu.be/NVI-dJD8Tnk",
     github: "#"
   },
@@ -25,7 +28,7 @@ const projects = [
     category: "Site Institucional",
     description: "Site institucional com layout profissional e otimizado para conversão.",
     tech: ["Figma", "HTML", "CSS", "JavaScript", "PHP", "Tailwind CSS"],
-    image: "src/assets/bolini.webp",
+    image: Bolini,
     link: "https://youtu.be/R5NEQZv_bOE",
     github: "#"
   },
@@ -34,7 +37,7 @@ const projects = [
     category: "Sistema",
     description: "Sistema web completo para gestão de estoque, com controle de produtos, fornecedores e relatórios detalhados.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "MySQL"],
-    image: "../../public/assets/xpto.webp",
+    image: XPTO,
     link: "https://youtu.be/p6ZS30bwW2g",
     github: "#"
   },
