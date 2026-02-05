@@ -12,9 +12,9 @@ export default function Header() {
   });
 
   const socialLinks = [
-    { icon: <Github size={20} />, href: "https://github.com" },
-    { icon: <Linkedin size={20} />, href: "https://linkedin.com" },
-    { icon: <Instagram size={20} />, href: "https://instagram.com" },
+    { icon: <Github size={20} />, href: "https://github.com/TGCodinhoto" },
+    { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/thiago-gravonski" },
+    { icon: <Instagram size={20} />, href: "https://www.instagram.com/thiago_gravonski/" },
   ];
 
   const menuItems = [
