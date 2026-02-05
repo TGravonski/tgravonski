@@ -6,7 +6,7 @@ const projects = [
     category: "Site Institucional",
     description: "Projeto de um site institucional para empresa de crédito, focado em apresentar serviços e captar leads.",
     tech: ["HTML", "CSS", "JavaScript", "Tailwind CSS", "PHP", "MySQL"],
-    image: "src/assets/vincecred.webp",
+    image: "../../public/assets/vincecred.webp",
     link: "https://youtu.be/gngFEFeKFUA",
     github: "#"
   },
@@ -15,7 +15,7 @@ const projects = [
     category: "Site Institucional",
     description: "Projeto de um site institucional para agência de marketing digital, com foco em apresentar portfólio e serviços.",
     tech: ["Figma", "HTML", "CSS", "JavaScript", "PHP", "Tailwind CSS"],
-    image: "src/assets/delphos.webp",
+    image: "../../public/assets/delphos.webp",
     link: "https://youtu.be/NVI-dJD8Tnk",
     github: "#"
   },
@@ -24,7 +24,7 @@ const projects = [
     category: "Site Institucional",
     description: "Site institucional com layout profissional e otimizado para conversão.",
     tech: ["Figma", "HTML", "CSS", "JavaScript", "PHP", "Tailwind CSS"],
-    image: "src/assets/bolini.webp",
+    image: "../../public/assets/bolini.webp",
     link: "https://youtu.be/R5NEQZv_bOE",
     github: "#"
   },
@@ -33,7 +33,7 @@ const projects = [
     category: "Sistema",
     description: "Sistema web completo para gestão de estoque, com controle de produtos, fornecedores e relatórios detalhados.",
     tech: ["HTML", "CSS", "JavaScript", "PHP", "Bootstrap", "MySQL"],
-    image: "src/assets/xpto.webp",
+    image: "../../public/assets/xpto.webp",
     link: "https://youtu.be/p6ZS30bwW2g",
     github: "#"
   },

@@ -1,5 +1,5 @@
 import { User, Code2, Rocket, Coffee } from 'lucide-react';
-import Profile from '../assets/profile.webp'; // Corrigido para .JPG conforme o arquivo real
+import Profile from '../../public/assets/profile.webp'; // Corrigido para .JPG conforme o arquivo real
 
 const About = () => {
   const stats = [
