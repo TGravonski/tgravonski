@@ -40,7 +40,7 @@ const Hero = () => {
             </a>
 
             <a
-              href="public/curriculo.pdf"
+              href="/curriculo.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 bg-bg-light dark:bg-surface-dark border border-border-light dark:border-border-dark px-8 py-4 rounded-full font-semibold hover:bg-surface-light dark:hover:bg-slate-800 transition-all text-text-main dark:text-text-dark-main w-full sm:w-auto shadow-sm"
