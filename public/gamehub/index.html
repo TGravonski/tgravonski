@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English | Game Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .bg-gradient-animate {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-animate min-h-screen text-slate-900 overflow-x-hidden flex flex-col items-center justify-center p-6">
+
+    <div class="container mx-auto max-w-5xl">
+        <header class="text-center mb-16 fade-in">
+            <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase mb-4 inline-block backdrop-blur-md">Level Up Your English</span>
+            <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg uppercase">Game Hub</h1>
+            <p class="text-white/80 text-xl max-w-2xl mx-auto">Selecione uma atividade para começar sua jornada.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full fade-in" style="animation-delay: 0.2s;">
+            
+            <a href="matchUp.html" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden block">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-10 group-hover:rotate-12 transition-transform">🔗</div>
+                <h2 class="text-2xl font-extrabold mb-2 group-hover:text-indigo-600 transition-colors">Match Up</h2>
+                <p class="text-slate-500 mb-6">Combine as palavras e imagens corretamente.</p>
+                <span class="text-indigo-600 font-bold flex items-center">Jogar agora <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+            </a>
+
+            <a href="memory.html" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden block">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-10 group-hover:rotate-12 transition-transform">🧠</div>
+                <h2 class="text-2xl font-extrabold mb-2 group-hover:text-emerald-600 transition-colors">Memory Game</h2>
+                <p class="text-slate-500 mb-6">Teste sua memória com este jogo clássico.</p>
+                <span class="text-emerald-600 font-bold flex items-center">Jogar agora <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+            </a>
+
+            <a href="quiz.html" class="bg-slate-900 p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden shadow-2xl block">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-20 group-hover:rotate-12 transition-transform">📝</div>
+                <h2 class="text-2xl font-extrabold mb-2 text-white">Quiz</h2>
+                <p class="text-slate-400 mb-6">Responda as perguntas e mostre o que aprendeu.</p>
+                <span class="text-indigo-400 font-bold flex items-center">Começar <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+            </a>
+
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quest | Memory Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .perspective { perspective: 1000px; }
+        .card-inner { 
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); 
+            transform-style: preserve-3d; 
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .card.flipped .card-inner { transform: rotateY(180deg); }
+        
+        .card-front, .card-back { 
+            backface-visibility: hidden; 
+            position: absolute; 
+            top: 0; left: 0; width: 100%; height: 100%; 
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .card-back { transform: rotateY(180deg); }
+
+        .bg-gradient-animate {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-enter { animation: modalEnter 0.5s ease-out forwards; }
+        @keyframes modalEnter {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .image-pop { animation: imagePop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
+        @keyframes imagePop {
+            0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-animate min-h-screen text-slate-900 overflow-x-hidden">
+
+    <div id="home-screen" class="container mx-auto px-6 py-16 min-h-screen flex flex-col justify-center">
+        <header class="text-center mb-16 fade-in">
+            <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase mb-4 inline-block backdrop-blur-md">Level Up Your English</span>
+            <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg">Memory Quest</h1>
+            <p class="text-white/80 text-xl max-w-2xl mx-auto">Domine o vocabulário básico de forma divertida.</p>
+        </header>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full fade-in" style="animation-delay: 0.2s;">
+            <div onclick="startGame('pronomes')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-10 group-hover:rotate-12 transition-transform">👤</div>
+                <h2 class="text-2xl font-extrabold mb-2 group-hover:text-indigo-600 transition-colors">Pronomes</h2>
+                <p class="text-slate-500 mb-6">I, She, They...</p>
+                <span class="text-indigo-600 font-bold flex items-center">Jogar agora <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+            </div>
+
+            <div onclick="startGame('wh_questions')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-10 group-hover:rotate-12 transition-transform">❓</div>
+                <h2 class="text-2xl font-extrabold mb-2 group-hover:text-emerald-600 transition-colors">WH-Questions</h2>
+                <p class="text-slate-500 mb-6">What, Where, Why...</p>
+                <span class="text-emerald-600 font-bold flex items-center">Jogar agora <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+            </div>
+
+            <div onclick="startGame('misturado')" class="bg-slate-900 p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden shadow-2xl">
+                <div class="absolute -right-4 -top-4 text-8xl opacity-20">🌀</div>
+                <h2 class="text-2xl font-extrabold mb-2 text-white">The Mix</h2>
+                <p class="text-slate-400 mb-6">Pronomes + WH-Questions</p>
+                <span class="text-indigo-400 font-bold flex items-center">Começar <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+            </div>
+        </div>
+    </div>
+
+    <div id="game-screen" class="hidden min-h-screen flex flex-col p-6">
+        <nav class="flex justify-between items-center max-w-4xl mx-auto w-full mb-8">
+            <button onclick="showHome()" class="glass px-6 py-2 rounded-full font-bold text-slate-700 hover:bg-white transition-colors">✕ Sair</button>
+            <div class="glass px-6 py-2 rounded-full font-bold">
+                <span id="score" class="text-indigo-600">0</span> <span class="text-slate-400">Pares</span>
+            </div>
+        </nav>
+
+        <div class="flex-1 flex flex-col items-center justify-center">
+            <h2 id="current-category-title" class="text-3xl font-black text-white mb-8 uppercase tracking-widest drop-shadow-md">Categoria</h2>
+            <div id="game-board" class="grid grid-cols-3 sm:grid-cols-4 gap-4 max-w-4xl w-full">
+                </div>
+        </div>
+    </div>
+
+    <div id="congratulations-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50 hidden">
+        <div class="glass p-8 rounded-3xl text-center shadow-2xl max-w-lg w-full">
+            <h3 class="text-4xl font-extrabold text-slate-900 mb-4">Congratulations!</h3>
+            <p class="text-xl text-slate-700 mb-6">You've mastered this category!</p>
+            <img id="congratulations-image" src="" alt="Congratulations!" class="image-pop w-48 h-48 object-cover rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
+            <button onclick="hideCongratulations()" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-indigo-700 transition-colors w-full">Play Again!</button>
+        </div>
+    </div>
+
+    <script>
+        const data = {
+            pronomes: [
+                {en:'I', pt:'Eu'}, {en:'You', pt:'Você'}, {en:'He', pt:'Ele'}, 
+                {en:'She', pt:'Ela'}, {en:'We', pt:'Nós'}, {en:'They', pt:'Eles/Elas'}
+            ],
+            wh_questions: [
+                {en:'What', pt:'O que/Qual'}, {en:'Where', pt:'Onde'}, {en:'When', pt:'Quando'},
+                {en:'Why', pt:'Por que'}, {en:'Which', pt:'Qual'}, {en:'Whose', pt:'De quem'}, {en:'How', pt:'Como'} , {en:'Who', pt:'Quem'}
+            ],
+            congratulations_images: [
+                'https://img.freepik.com/fotos-premium/close-up-do-macaco-mixedbreed-entre-o-chimpanze-e-o-bonobo-sorrindo_191971-22824.jpg?w=740',
+                'https://i.pinimg.com/736x/87/fb/5f/87fb5fe01275c5d32ce22f0e22f18e7a.jpg',
+                'https://media.istockphoto.com/id/824860820/pt/foto/barbary-macaque.jpg?s=612x612&w=0&k=20&c=3Jw8Z6BWMR4g3loNL8niMYQRE7JsRvklL07xqLGKv6E=',
+                'https://thumbs.dreamstime.com/b/banner-de-animais-engra%C3%A7ado-macaco-sorrindo-e-dando-polegares-feliz-chimpanz%C3%A9-ou-rindo-isolados-sobre-fundo-cor-s%C3%B3lida-animal-404775858.jpg',
+                'https://imagenes.elpais.com/resizer/v2/WQGOZS5S7D3DCLWMVVJM7S5VAQ.jpg?auth=d6a587caabc3fe9784b42f91cb3d8ebbd00fb04408d5ae49cf7ccf42dce579f3&width=980&height=980&smart=true',
+                'https://wallpapers.com/images/hd/funny-monkey-pictures-3y1bytk31kmihkzw.jpg',
+                'https://www.estadao.com.br/resizer/v2/HQHHGUKGBNL2TKAV27ZT3SXRMA.jpg?quality=80&auth=1761d3201b0ec3467054e6bf4dab0cb573157482bb65fd42e5a0f41278345636&width=380',
+                'https://media.istockphoto.com/id/184941527/pt/foto/macho-chimpanz%C3%A9-em-roupas-de-neg%C3%B3cios.jpg?s=612x612&w=0&k=20&c=8fHBikTJvW-DRyCT1gj0RoB86YAH6oy99rFAFaYZBG8='
+            ]
+        };
+
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let currentPairs = [];
+
+        function startGame(category) {
+            document.getElementById('home-screen').classList.add('hidden');
+            document.getElementById('game-screen').classList.remove('hidden');
+            document.getElementById('congratulations-modal').classList.add('hidden');
+            
+            matchedPairs = 0;
+            updateScore();
+
+            if (category === 'misturado') {
+                document.getElementById('current-category-title').innerText = "The Mix";
+                const all = [...data.pronomes, ...data.wh_questions];
+                currentPairs = all.sort(() => 0.5 - Math.random()).slice(0, 8); 
+            } else {
+                document.getElementById('current-category-title').innerText = category.replace('_', '-');
+                currentPairs = data[category];
+            }
+
+            renderBoard(currentPairs);
+        }
+
+        function renderBoard(pairsArray) {
+            const board = document.getElementById('game-board');
+            board.innerHTML = '';
+            let deck = [];
+            
+            pairsArray.forEach((pair, index) => {
+                deck.push({ text: pair.en, id: index });
+                deck.push({ text: pair.pt, id: index });
+            });
+
+            deck.sort(() => Math.random() - 0.5);
+
+            deck.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'card h-32 sm:h-40 perspective cursor-pointer';
+                // Removida a classe pointer-events-none que travava o clique
+                card.innerHTML = `
+                    <div class="card-inner shadow-2xl rounded-2xl">
+                        <div class="card-front bg-slate-900 text-white text-3xl font-bold">?</div>
+                        <div class="card-back bg-white border-4 border-slate-900 text-slate-900 font-black text-center p-2 text-sm sm:text-base">
+                            ${item.text}
+                        </div>
+                    </div>
+                `;
+                card.dataset.id = item.id;
+                card.onclick = () => handleFlip(card);
+                board.appendChild(card);
+            });
+        }
+
+        function handleFlip(card) {
+            if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
+                card.classList.add('flipped');
+                flippedCards.push(card);
+
+                if (flippedCards.length === 2) {
+                    const [c1, c2] = flippedCards;
+                    if (c1.dataset.id === c2.dataset.id) {
+                        matchedPairs++;
+                        updateScore();
+                        flippedCards = [];
+                        
+                        // Efeito visual de acerto
+                        c1.querySelector('.card-back').style.borderColor = '#10b981';
+                        c2.querySelector('.card-back').style.borderColor = '#10b981';
+
+                        if (matchedPairs === currentPairs.length) {
+                            setTimeout(showCongratulations, 600);
+                        }
+                    } else {
+                        setTimeout(() => {
+                            c1.classList.remove('flipped');
+                            c2.classList.remove('flipped');
+                            flippedCards = [];
+                        }, 1000);
+                    }
+                }
+            }
+        }
+
+        function updateScore() {
+            document.getElementById('score').innerText = matchedPairs;
+        }
+
+        function showHome() {
+            document.getElementById('home-screen').classList.remove('hidden');
+            document.getElementById('game-screen').classList.add('hidden');
+            document.getElementById('congratulations-modal').classList.add('hidden');
+        }
+
+        function showCongratulations() {
+            const modal = document.getElementById('congratulations-modal');
+            const imgElement = document.getElementById('congratulations-image');
+            const randomIndex = Math.floor(Math.random() * data.congratulations_images.length);
+            
+            imgElement.src = data.congratulations_images[randomIndex];
+            modal.classList.remove('hidden');
+            
+            // Força reinício da animação do modal
+            const content = modal.querySelector('.glass');
+            content.classList.remove('modal-enter');
+            void content.offsetWidth;
+            content.classList.add('modal-enter');
+        }
+
+        function hideCongratulations() {
+            showHome();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/gamehub",
+      "destination": "/gamehub/index.html"
+    },
+    {
+      "source": "/gamehub/(.*)",
+      "destination": "/gamehub/$1"
+    }
+  ]
+}

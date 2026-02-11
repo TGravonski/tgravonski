@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English Quest | Match Up</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        
+        .glass {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .bg-gradient-animate {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .fade-in { animation: fadeIn 0.5s ease-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .drag-item { 
+            touch-action: none; 
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); 
+            user-select: none;
+            cursor: grab;
+        }
+        .drag-item:active { cursor: grabbing; transform: scale(0.95); }
+        
+        .drop-zone { transition: all 0.3s ease; }
+        .drop-zone.drag-over { 
+            background: rgba(99, 102, 241, 0.1);
+            border-color: #6366f1;
+            transform: scale(1.02);
+        }
+
+        .correct-animate { 
+            animation: success-pulse 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; 
+        }
+        @keyframes success-pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); background: rgba(34, 197, 94, 0.2); }
+            100% { transform: scale(1); background: rgba(34, 197, 94, 0.1); border-color: #10b981; color: #059669; }
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-1px, 0, 0); }
+            20%, 80% { transform: translate3d(2px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+            40%, 60% { transform: translate3d(4px, 0, 0); }
+        }
+
+        .modal-enter { animation: modalEnter 0.5s ease-out forwards; }
+        @keyframes modalEnter {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .image-pop { animation: imagePop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
+        @keyframes imagePop {
+            0% { transform: scale(0.5) rotate(0deg); opacity: 0; }
+            50% { transform: scale(1.1) rotate(5deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-gradient-animate min-h-screen text-slate-900 overflow-x-hidden p-6">
+
+    <div id="game-container" class="max-w-5xl mx-auto">
+        <nav class="flex justify-between items-center w-full mb-8 fade-in">
+            <a href="index.html" class="glass px-6 py-2 rounded-full font-bold text-slate-700 hover:bg-white transition-colors">✕ Sair</a>
+            <div class="glass px-6 py-2 rounded-full font-bold">
+                <span id="score" class="text-indigo-600">0/7</span> <span class="text-slate-400">Progresso</span>
+            </div>
+        </nav>
+
+        <header class="text-center mb-12 fade-in">
+            <h1 class="text-5xl font-extrabold text-white mb-4 drop-shadow-lg">Match Up Quest</h1>
+            <p class="text-white/80 text-lg">Arraste a tradução para o pronome correspondente</p>
+        </header>
+
+        <div class="glass p-8 md:p-12 rounded-[2.5rem] shadow-2xl fade-in" style="animation-delay: 0.2s;">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                
+                <div>
+                    <h2 class="text-slate-400 font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></span> Português
+                    </h2>
+                    <div id="options-container" class="grid grid-cols-1 gap-3"></div>
+                </div>
+
+                <div>
+                    <h2 class="text-slate-400 font-bold uppercase tracking-widest text-xs mb-6 flex items-center gap-2">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span> English
+                    </h2>
+                    <div id="targets-container" class="grid grid-cols-1 gap-4"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="win-modal" class="fixed inset-0 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4 z-50">
+        <div class="glass p-10 rounded-[3rem] max-w-lg w-full text-center shadow-2xl modal-enter">
+            <h2 class="text-4xl font-extrabold text-slate-900 mb-4">Congratulations!</h2>
+            <p class="text-xl text-slate-700 mb-6">You've mastered this challenge!</p>
+            <img id="congratulations-image" src="" alt="Congratulations!" class="image-pop w-48 h-48 object-cover rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
+            <button onclick="location.reload()" class="w-full bg-indigo-600 text-white font-bold py-4 rounded-2xl hover:bg-indigo-700 transition-all shadow-lg active:scale-95 uppercase tracking-wider">Play Again!</button>
+        </div>
+    </div>
+
+    <script>
+        const congratulations_images = [
+            'https://img.freepik.com/fotos-premium/close-up-do-macaco-mixedbreed-entre-o-chimpanze-e-o-bonobo-sorrindo_191971-22824.jpg?w=740',
+            'https://i.pinimg.com/736x/87/fb/5f/87fb5fe01275c5d32ce22f0e22f18e7a.jpg',
+            'https://media.istockphoto.com/id/824860820/pt/foto/barbary-macaque.jpg?s=612x612&w=0&k=20&c=3Jw8Z6BWMR4g3loNL8niMYQRE7JsRvklL07xqLGKv6E=',
+            'https://thumbs.dreamstime.com/b/banner-de-animais-engra%C3%A7ado-macaco-sorrindo-e-dando-polegares-feliz-chimpanz%C3%A9-ou-rindo-isolados-sobre-fundo-cor-s%C3%B3lida-animal-404775858.jpg',
+            'https://imagenes.elpais.com/resizer/v2/WQGOZS5S7D3DCLWMVVJM7S5VAQ.jpg?auth=d6a587caabc3fe9784b42f91cb3d8ebbd00fb04408d5ae49cf7ccf42dce579f3&width=980&height=980&smart=true',
+            'https://wallpapers.com/images/hd/funny-monkey-pictures-3y1bytk31kmihkzw.jpg',
+            'https://www.estadao.com.br/resizer/v2/HQHHGUKGBNL2TKAV27ZT3SXRMA.jpg?quality=80&auth=1761d3201b0ec3467054e6bf4dab0cb573157482bb65fd42e5a0f41278345636&width=380',
+            'https://media.istockphoto.com/id/184941527/pt/foto/macho-chimpanz%C3%A9-em-roupas-de-neg%C3%B3cios.jpg?s=612x612&w=0&k=20&c=8fHBikTJvW-DRyCT1gj0RoB86YAH6oy99rFAFaYZBG8='
+        ];
+
+        const data = [
+            { en: 'I', pt: 'Eu 👤', id: 'i' },
+            { en: 'You', pt: 'Você 🫵', id: 'you' },
+            { en: 'He', pt: 'Ele 👦', id: 'he' },
+            { en: 'She', pt: 'Ela 👧', id: 'she' },
+            { en: 'It', pt: 'Isto 📦', id: 'it' },
+            { en: 'We', pt: 'Nós 👥', id: 'we' },
+            { en: 'They', pt: 'Eles/Elas 👫', id: 'they' }
+        ];
+
+        let score = 0;
+
+        function initGame() {
+            const optionsContainer = document.getElementById('options-container');
+            const targetsContainer = document.getElementById('targets-container');
+
+            // Shuffle and Create Drag Items
+            [...data].sort(() => Math.random() - 0.5).forEach(item => {
+                const dragEl = document.createElement('div');
+                dragEl.className = "drag-item bg-white border border-slate-200 p-4 rounded-2xl text-lg font-bold text-slate-700 shadow-sm hover:shadow-md transition-all";
+                dragEl.draggable = true;
+                dragEl.id = `drag-${item.id}`;
+                dragEl.dataset.value = item.id;
+                dragEl.textContent = item.pt;
+
+                dragEl.addEventListener('dragstart', e => {
+                    e.dataTransfer.setData('text', e.target.id);
+                    dragEl.style.opacity = "0.4";
+                });
+                dragEl.addEventListener('dragend', () => dragEl.style.opacity = "1");
+                
+                optionsContainer.appendChild(dragEl);
+            });
+
+            // Create Targets
+            data.forEach(item => {
+                const targetRow = document.createElement('div');
+                targetRow.className = "flex items-center gap-3 group";
+                targetRow.innerHTML = `
+                    <div class="w-24 h-14 flex items-center justify-center bg-slate-900 rounded-2xl shadow-lg">
+                        <span class="text-xl font-black text-white">${item.en}</span>
+                    </div>
+                    <div class="flex-1 drop-zone h-14 border-2 border-dashed border-slate-300 rounded-2xl flex items-center justify-center text-slate-400 font-bold text-[10px] uppercase tracking-widest transition-all" 
+                         data-match="${item.id}">
+                        Solte aqui
+                    </div>
+                `;
+                targetsContainer.appendChild(targetRow);
+            });
+
+            setupDragAndDrop();
+        }
+
+        function setupDragAndDrop() {
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    
+                    const dragId = e.dataTransfer.getData('text');
+                    const dragEl = document.getElementById(dragId);
+                    
+                    if (!dragEl) return;
+
+                    if (dragEl.dataset.value === zone.dataset.match) {
+                        zone.innerHTML = `<span class="flex items-center gap-2 font-bold text-base text-emerald-600">✨ ${dragEl.textContent}</span>`;
+                        zone.classList.add('correct-animate');
+                        zone.classList.remove('border-dashed', 'border-slate-300');
+                        zone.classList.add('border-solid', 'bg-white');
+                        dragEl.remove();
+                        updateScore();
+                    } else {
+                        zone.classList.add('shake', 'border-red-400', 'bg-red-50');
+                        setTimeout(() => zone.classList.remove('shake', 'border-red-400', 'bg-red-50'), 500);
+                    }
+                });
+            });
+        }
+
+        function updateScore() {
+            score++;
+            document.getElementById('score').textContent = `${score}/${data.length}`;
+            
+            if (score === data.length) {
+                setTimeout(showCongratulations, 600);
+            }
+        }
+
+        function showCongratulations() {
+            const modal = document.getElementById('win-modal');
+            const imgElement = document.getElementById('congratulations-image');
+            const randomIndex = Math.floor(Math.random() * congratulations_images.length);
+            
+            imgElement.src = congratulations_images[randomIndex];
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Força reinício da animação do modal
+            const content = modal.querySelector('.glass');
+            content.classList.remove('modal-enter');
+            void content.offsetWidth;
+            content.classList.add('modal-enter');
+        }
+
+        initGame();
+    </script>
+</body>
+</html>
