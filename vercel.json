@@ -1,14 +1,17 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
   "rewrites": [
     {
-      "source": "/gamehub/:path",
-      "destination": "/gamehub/:path.html"
+      "source": "/gamehub",
+      "destination": "/gamehub/index.html"
     },
     {
-      "source": "/gamehub/(.*)",
-      "destination": "/gamehub/$1"
+      "source": "/gamehub/:match",
+      "destination": "/gamehub/:match.html"
+    },
+    {
+      "source": "/gamehub/:match*",
+      "destination": "/gamehub/:match*"
     }
   ]
 }
