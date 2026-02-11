@@ -6,8 +6,8 @@
       "destination": "/gamehub/index.html"
     },
     {
-      "source": "/gamehub/:path*",
-      "destination": "/gamehub/:path*.html"
+      "source": "/gamehub/:path",
+      "destination": "/gamehub/:path.html"
     },
     {
       "source": "/gamehub/:path*",
