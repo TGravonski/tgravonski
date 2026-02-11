@@ -9,10 +9,24 @@
     <style>
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
         
+        /* NOVO TEMA: Diferente do azul/roxo do Hub */
+        .bg-gradient-memory {
+            background: linear-gradient(-45deg, #0f172a, #134e4a, #0d9488, #1e293b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
         .glass {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9); /* Mais opaco para leitura clara */
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Estilização do Título com Gradiente */
+        .title-gradient {
+            background: linear-gradient(to bottom, #ffffff, #99f6e4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .perspective { perspective: 1000px; }
@@ -31,15 +45,10 @@
             top: 0; left: 0; width: 100%; height: 100%; 
             display: flex; align-items: center; justify-content: center;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
         }
         .card-back { transform: rotateY(180deg); }
 
-        .bg-gradient-animate {
-            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-        }
         @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
@@ -66,21 +75,26 @@
         }
     </style>
 </head>
-<body class="bg-gradient-animate min-h-screen text-slate-900 overflow-x-hidden">
+<body class="bg-gradient-memory min-h-screen text-slate-900 overflow-x-hidden">
+
+    <a href="index.html" class="fixed top-6 left-6 z-50 flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white px-5 py-2.5 rounded-full font-bold transition-all border border-white/20 shadow-xl group">
+        <span class="group-hover:-translate-x-1 transition-transform">←</span> 
+        Voltar ao Hub
+    </a>
 
     <div id="home-screen" class="container mx-auto px-6 py-16 min-h-screen flex flex-col justify-center">
         <header class="text-center mb-16 fade-in">
-            <span class="bg-white/20 text-white px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase mb-4 inline-block backdrop-blur-md">Level Up Your English</span>
-            <h1 class="text-6xl md:text-7xl font-extrabold text-white mb-6 drop-shadow-lg">Memory Quest</h1>
-            <p class="text-white/80 text-xl max-w-2xl mx-auto">Domine o vocabulário básico de forma divertida.</p>
+            <span class="bg-teal-500/20 text-teal-300 border border-teal-500/30 px-4 py-1 rounded-full text-sm font-bold tracking-widest uppercase mb-4 inline-block backdrop-blur-md">Memory Quest</span>
+            <h1 class="text-6xl md:text-7xl font-extrabold mb-6 drop-shadow-lg title-gradient">Memory Quest</h1>
+            <p class="text-white/70 text-xl max-w-2xl mx-auto">Desafie sua mente e domine o vocabulário básico.</p>
         </header>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto w-full fade-in" style="animation-delay: 0.2s;">
             <div onclick="startGame('pronomes')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden">
                 <div class="absolute -right-4 -top-4 text-8xl opacity-10 group-hover:rotate-12 transition-transform">👤</div>
-                <h2 class="text-2xl font-extrabold mb-2 group-hover:text-indigo-600 transition-colors">Pronomes</h2>
+                <h2 class="text-2xl font-extrabold mb-2 group-hover:text-teal-600 transition-colors">Pronomes</h2>
                 <p class="text-slate-500 mb-6">I, She, They...</p>
-                <span class="text-indigo-600 font-bold flex items-center">Jogar agora <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+                <span class="text-teal-600 font-bold flex items-center">Jogar agora <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
             </div>
 
             <div onclick="startGame('wh_questions')" class="glass p-8 rounded-3xl cursor-pointer hover:scale-105 transition-all group relative overflow-hidden">
@@ -94,32 +108,32 @@
                 <div class="absolute -right-4 -top-4 text-8xl opacity-20">🌀</div>
                 <h2 class="text-2xl font-extrabold mb-2 text-white">The Mix</h2>
                 <p class="text-slate-400 mb-6">Pronomes + WH-Questions</p>
-                <span class="text-indigo-400 font-bold flex items-center">Começar <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
+                <span class="text-teal-400 font-bold flex items-center">Começar <span class="ml-2 group-hover:translate-x-2 transition-transform">→</span></span>
             </div>
         </div>
     </div>
 
     <div id="game-screen" class="hidden min-h-screen flex flex-col p-6">
         <nav class="flex justify-between items-center max-w-4xl mx-auto w-full mb-8">
-            <button onclick="showHome()" class="glass px-6 py-2 rounded-full font-bold text-slate-700 hover:bg-white transition-colors">✕ Sair</button>
-            <div class="glass px-6 py-2 rounded-full font-bold">
-                <span id="score" class="text-indigo-600">0</span> <span class="text-slate-400">Pares</span>
+            <button onclick="showHome()" class="glass px-6 py-2 rounded-full font-bold text-slate-700 hover:bg-white transition-colors">✕ Sair do Jogo</button>
+            <div class="glass px-6 py-2 rounded-full font-bold text-teal-700">
+                <span id="score">0</span> <span class="text-slate-400">Pares</span>
             </div>
         </nav>
 
         <div class="flex-1 flex flex-col items-center justify-center">
             <h2 id="current-category-title" class="text-3xl font-black text-white mb-8 uppercase tracking-widest drop-shadow-md">Categoria</h2>
             <div id="game-board" class="grid grid-cols-3 sm:grid-cols-4 gap-4 max-w-4xl w-full">
-                </div>
+            </div>
         </div>
     </div>
 
-    <div id="congratulations-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50 hidden">
-        <div class="glass p-8 rounded-3xl text-center shadow-2xl max-w-lg w-full">
+    <div id="congratulations-modal" class="fixed inset-0 bg-black/80 flex items-center justify-center p-4 z-50 hidden">
+        <div class="bg-white p-8 rounded-3xl text-center shadow-2xl max-w-lg w-full">
             <h3 class="text-4xl font-extrabold text-slate-900 mb-4">Congratulations!</h3>
-            <p class="text-xl text-slate-700 mb-6">You've mastered this category!</p>
-            <img id="congratulations-image" src="" alt="Congratulations!" class="image-pop w-48 h-48 object-cover rounded-full mx-auto mb-6 border-4 border-white shadow-lg">
-            <button onclick="hideCongratulations()" class="bg-indigo-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-indigo-700 transition-colors w-full">Play Again!</button>
+            <p class="text-xl text-slate-700 mb-6">Você dominou esta categoria!</p>
+            <img id="congratulations-image" src="" alt="Congratulations!" class="image-pop w-48 h-48 object-cover rounded-full mx-auto mb-6 border-4 border-teal-500 shadow-lg">
+            <button onclick="hideCongratulations()" class="bg-teal-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-teal-700 transition-colors w-full shadow-lg shadow-teal-200">Jogar de Novo!</button>
         </div>
     </div>
 
@@ -184,10 +198,9 @@
             deck.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'card h-32 sm:h-40 perspective cursor-pointer';
-                // Removida a classe pointer-events-none que travava o clique
                 card.innerHTML = `
                     <div class="card-inner shadow-2xl rounded-2xl">
-                        <div class="card-front bg-slate-900 text-white text-3xl font-bold">?</div>
+                        <div class="card-front bg-slate-900 text-white text-3xl font-bold border-2 border-teal-500/30">?</div>
                         <div class="card-back bg-white border-4 border-slate-900 text-slate-900 font-black text-center p-2 text-sm sm:text-base">
                             ${item.text}
                         </div>
@@ -211,9 +224,10 @@
                         updateScore();
                         flippedCards = [];
                         
-                        // Efeito visual de acerto
                         c1.querySelector('.card-back').style.borderColor = '#10b981';
+                        c1.querySelector('.card-back').style.backgroundColor = '#ecfdf5';
                         c2.querySelector('.card-back').style.borderColor = '#10b981';
+                        c2.querySelector('.card-back').style.backgroundColor = '#ecfdf5';
 
                         if (matchedPairs === currentPairs.length) {
                             setTimeout(showCongratulations, 600);
@@ -247,8 +261,7 @@
             imgElement.src = data.congratulations_images[randomIndex];
             modal.classList.remove('hidden');
             
-            // Força reinício da animação do modal
-            const content = modal.querySelector('.glass');
+            const content = modal.querySelector('div');
             content.classList.remove('modal-enter');
             void content.offsetWidth;
             content.classList.add('modal-enter');
