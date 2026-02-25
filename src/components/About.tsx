@@ -71,27 +71,28 @@ const About = () => {
             </h2>
 
             <div className="space-y-4 text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+
               <p>
-                Olá! Me chamo <span className="text-text-main dark:text-text-dark-main font-semibold">Thiago</span>,
+                Olá! Me chamo <span className="text-white font-semibold">Thiago</span>,
                 um desenvolvedor apaixonado por criar soluções digitais que realmente fazem a diferença.
-                Com mais de <span className="font-semibold text-text-main dark:text-text-dark-main">2 anos</span> de experiência
-                e <span className="font-semibold text-text-main dark:text-text-dark-main">Bacharel em Ciência da Computação</span>.
+                Com mais de <span className="font-semibold text-white">2 anos</span> de experiência
+                e <span className="font-semibold text-white">Bacharel em Ciência da Computação</span>.
               </p>
 
               {expanded && (
                 <>
                   <p>
                     Criei a{' '}
-                    <a className="hover:text-green-500 font-semibold text-white" href="#">
+                    <a className="hover:text-green-500 font-semibold text-white" href="https://gracode.com.br" target="_blank" rel="noopener noreferrer">
                       GRA.CODE
                     </a>{' '}
-                    onde desenvolvo sistemas em <span className="font-semibold">PHP</span> e aplicações modernas com{' '}
-                    <span className="font-semibold">React, TypeScript e Node.js</span>, focadas em performance e escalabilidade.
+                    onde desenvolvo sistemas em <span className="font-semibold text-white">PHP</span> e aplicações modernas com{' '}
+                    <span className="font-semibold text-white">React, TypeScript</span> e<span className="font-semibold text-white"> Node.js</span>, focadas em performance e escalabilidade.
                   </p>
 
                   <p>
-                    Atuo como <span className="font-semibold">Fullstack</span>, com forte destaque em{' '}
-                    <span className="font-semibold">Front-end</span> e <span className="font-semibold">UI/UX</span>,
+                    Atuo como <span className="font-semibold text-white">Fullstack</span>, com forte destaque em{' '}
+                    <span className="font-semibold text-white">Front-end</span> e <span className="font-semibold text-white">UI/UX</span>,
                     sempre buscando transformar lógica complexa em experiências visuais refinadas.
                   </p>
                 </>

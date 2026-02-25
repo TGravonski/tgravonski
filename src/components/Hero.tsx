@@ -1,4 +1,5 @@
 import { ArrowRight, FileText } from 'lucide-react';
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
@@ -56,13 +57,26 @@ const Hero = () => {
 
       {/* Indicador de Scroll Otimizado */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-2 opacity-60 hover:opacity-100 transition-opacity duration-300">
-        <span className="text-[10px] uppercase tracking-widest text-slate-500 font-medium">Scroll</span>
+        <span className="text-[10px] uppercase tracking-widest text-slate-500 font-medium">
+          Scroll
+        </span>
 
         <div className="w-[26px] h-[42px] border-2 border-slate-400 dark:border-slate-600 rounded-full flex justify-center p-1.5">
-          {/* A bolinha que se move */}
-          <div className="w-1 h-2 bg-slate-500 dark:bg-slate-300 rounded-full animate-scroll-inner" />
+          <motion.div
+            animate={{
+              y: [0, 14, 0],
+              opacity: [1, 0, 1],
+            }}
+            transition={{
+              duration: 1.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-1 h-2 bg-slate-500 dark:bg-slate-300 rounded-full"
+          />
         </div>
       </div>
+
     </section>
   );
 };
