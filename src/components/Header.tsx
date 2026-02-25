@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'framer-motion';
 import { Github, Instagram, Linkedin, Menu, X } from 'lucide-react';
 
@@ -7,22 +7,38 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
 
+  // ✅ Evita re-render desnecessário no scroll
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 30);
+    setIsScrolled((prev) => {
+      const next = latest > 30;
+      return prev !== next ? next : prev;
+    });
   });
 
-  const socialLinks = [
+  const handleToggleMenu = useCallback(() => {
+    setIsOpen((prev) => !prev);
+  }, []);
+
+  const handleCloseMenu = useCallback(() => {
+    setIsOpen(false);
+  }, []);
+
+  const handleScrollTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
+  const socialLinks = useMemo(() => [
     { icon: <Github size={20} />, href: "https://github.com/TGravonski" },
     { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/thiago-gravonski" },
     { icon: <Instagram size={20} />, href: "https://www.instagram.com/thiago_gravonski/" },
-  ];
+  ], []);
 
-  const menuItems = [
+  const menuItems = useMemo(() => [
     { label: 'Home', id: 'hero' },
     { label: 'Sobre', id: 'about' },
     { label: 'Projetos', id: 'projects' },
     { label: 'Stacks', id: 'stacks' },
-  ];
+  ], []);
 
   return (
     <motion.header
@@ -41,7 +57,7 @@ export default function Header() {
         {/* Lado Esquerdo: Logo */}
         <div
           className="flex items-center gap-3 z-[110] group cursor-pointer flex-1"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={handleScrollTop}
         >
           <div className="relative shrink-0">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary to-purple-600 blur-md opacity-40 group-hover:opacity-70 transition-opacity duration-500" />
@@ -90,7 +106,7 @@ export default function Header() {
 
           <button
             className="md:hidden p-2 text-text-dark-muted hover:text-white transition-colors"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={handleToggleMenu}
           >
             {isOpen ? <X size={24} className="text-white" /> : <Menu size={24} />}
           </button>
@@ -109,12 +125,12 @@ export default function Header() {
             <nav className="flex flex-col items-center gap-8">
               {menuItems.map((item, idx) => (
                 <motion.a
+                  key={item.id}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
-                  key={item.id}
                   href={`#${item.id}`}
-                  onClick={() => setIsOpen(false)}
+                  onClick={handleCloseMenu}
                   className="text-4xl font-bold tracking-tighter text-white hover:text-accent transition-colors"
                 >
                   {item.label}
@@ -123,7 +139,13 @@ export default function Header() {
 
               <div className="flex gap-8 mt-12 pt-8 border-t border-white/10 w-64 justify-center">
                 {socialLinks.map((social, index) => (
-                  <a key={index} href={social.href} target="_blank" className="text-text-dark-muted hover:text-white transition-colors scale-125">
+                  <a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-text-dark-muted hover:text-white transition-colors scale-125"
+                  >
                     {social.icon}
                   </a>
                 ))}
