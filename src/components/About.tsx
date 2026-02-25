@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { User, Code2, Rocket, Coffee, CheckCircle2 } from 'lucide-react';
+import { User, Code2, Rocket, Coffee, CheckCircle2, Lightbulb } from 'lucide-react';
 import Profile from '../assets/profile.webp';
 
 const About = () => {
@@ -8,7 +8,7 @@ const About = () => {
   const stats = [
     { label: "Experiência", value: "2+", icon: <Rocket className="text-primary" size={18} /> },
     { label: "Projetos", value: "6+", icon: <Code2 className="text-purple-500" size={18} /> },
-    { label: "Cafés", value: "∞", icon: <Coffee className="text-amber-500" size={18} /> },
+    { label: "Soluções", value: "15+", icon: <Lightbulb className="text-yellow-500" size={18} /> }
   ];
 
   return (
@@ -107,7 +107,7 @@ const About = () => {
             </button>
 
             <div className="mt-10 flex flex-wrap gap-2">
-              {['Arquitetura Limpa', 'UX Design', 'Performance', 'Problem Solving'].map(tag => (
+              {['Arquitetura Limpa', 'UX Design', 'Performance', 'Responsividade', 'Clean Code', 'SEO'].map(tag => (
                 <div
                   key={tag}
                   className="group flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-lg hover:border-primary/50 transition-colors"

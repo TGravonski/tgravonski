@@ -50,7 +50,7 @@ export default function Header() {
               <span className="relative text-white font-black text-sm tracking-tighter">TG</span>
             </div>
           </div>
-          <div className="flex flex-col leading-tight hidden sm:flex">
+          <div className="flex flex-col leading-tight">
             <span className="text-lg font-bold tracking-tight text-text-dark-main">
               Thiago<span className="bg-gradient-to-r from-accent to-primary bg-clip-text text-transparent ml-1">Dev</span>
             </span>
@@ -64,7 +64,7 @@ export default function Header() {
             <a
               key={item.id}
               href={`#${item.id}`}
-              className="relative text-[10px] uppercase tracking-[0.2em] font-bold text-text-dark-muted hover:text-white transition-colors group"
+              className="relative text-[12px] uppercase tracking-[0.2em] font-bold text-text-dark-muted hover:text-white transition-colors group"
             >
               {item.label}
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-accent transition-all group-hover:w-full" />
