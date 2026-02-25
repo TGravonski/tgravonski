@@ -39,8 +39,8 @@ export default function Header() {
       `}>
 
         {/* Lado Esquerdo: Logo */}
-        <div 
-          className="flex items-center gap-3 z-[110] group cursor-pointer flex-1" 
+        <div
+          className="flex items-center gap-3 z-[110] group cursor-pointer flex-1"
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <div className="relative shrink-0">
@@ -59,7 +59,7 @@ export default function Header() {
         </div>
 
         {/* Centro: Nav Desktop */}
-        <nav className="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2">
+        <nav className="hidden md:flex items-center justify-center gap-8 absolute left-1/2 -translate-x-1/2 z-[120]">
           {menuItems.map((item) => (
             <a
               key={item.id}
@@ -120,7 +120,7 @@ export default function Header() {
                   {item.label}
                 </motion.a>
               ))}
-              
+
               <div className="flex gap-8 mt-12 pt-8 border-t border-white/10 w-64 justify-center">
                 {socialLinks.map((social, index) => (
                   <a key={index} href={social.href} target="_blank" className="text-text-dark-muted hover:text-white transition-colors scale-125">

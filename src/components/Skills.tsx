@@ -13,7 +13,8 @@ import {
   SiCss3,
   SiJavascript,
   SiGithub,
-  SiPostgresql
+  SiPostgresql,
+  SiNextdotjs,
 } from 'react-icons/si';
 
 const skills = [
@@ -23,6 +24,7 @@ const skills = [
   { name: "React", icon: <SiReact size={24} className="text-[#61DAFB]" /> },
   { name: "TypeScript", icon: <SiTypescript size={24} className="text-[#3178C6]" /> },
   { name: "Node.js", icon: <SiNodedotjs size={24} className="text-[#339933]" /> },
+  { name: "Next.js", icon: <SiNextdotjs size={24} className="text-[#000000]" /> },
   { name: "PostgreSQL", icon: <SiPostgresql size={24} className="text-[#4169E1]" /> },
   { name: "MySQL", icon: <SiMysql size={24} className="text-[#4479A1]" /> },
   { name: "Tailwind CSS", icon: <SiTailwindcss size={24} className="text-[#06B6D4]" /> },
