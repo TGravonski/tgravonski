@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { User, Code2, Rocket, Coffee, CheckCircle2, Lightbulb } from 'lucide-react';
+import { User, Code2, Rocket, CheckCircle2, Lightbulb } from 'lucide-react';
 import Profile from '../assets/profile.webp';
 
 const About = () => {
