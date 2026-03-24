@@ -1,4 +1,3 @@
-
 # Olá, me chamo Thiago 👋🏻
 
 ### 🚀 Desenvolvedor Full Stack
@@ -33,7 +32,7 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 **Back-end & Banco de Dados**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,php,mysql,firebase" />
+  <img src="https://skillicons.dev/icons?i=nodejs,php,mysql,firebase,supabase" />
 </p>
 
 ---
