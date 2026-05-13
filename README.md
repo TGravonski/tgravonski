@@ -65,5 +65,4 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
   </a>
 </p>
 
-- ⚡ **Curiosidade:** Adoro explorar novas tendências de design e melhorar a experiência do usuário (UX/UI).
 - 📧 **Entre em contato:** <a href="mailto:tgravonski@gmail.com">tgravonski@gmail.com</a>
