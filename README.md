@@ -6,18 +6,13 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 
 ---
 
-### 🔗 Meus Portfólios
+### 🔗 Meu Portfólio (Gra.code)
 
 <p align="left">
-  <a href="https://www.tgravonski.com.br/" target="_blank">
-    <img src="https://img.shields.io/badge/Portfolio_Dev-121212?style=for-the-badge&logo=github&logoColor=white" alt="Portfolio Dev" />
-  </a>
   <a href="https://gracode.com.br/" target="_blank">
     <img src="https://img.shields.io/badge/GraCode_Vendas-5DD62C?style=for-the-badge&logo=rocket&logoColor=white" alt="GraCode Vendas" />
   </a>
 </p>
-
-> **Nota:** No meu site pessoal você encontra meu stack técnico, enquanto na GraCode apresento soluções focadas em conversão e negócios.
 
 ---
 
