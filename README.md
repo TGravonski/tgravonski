@@ -6,16 +6,6 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 
 ---
 
-### 🔗 Meu Portfólio (Gra.code)
-
-<p align="left">
-  <a href="https://gracode.com.br/" target="_blank">
-    <img src="https://img.shields.io/badge/GraCode_Vendas-5DD62C?style=for-the-badge&logo=rocket&logoColor=white" alt="GraCode Vendas" />
-  </a>
-</p>
-
----
-
 ### 🛠️ Minhas Tecnologias (Tech Stack)
 
 **Ferramentas de UI/UX e No-Code**
