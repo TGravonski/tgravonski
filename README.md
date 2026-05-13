@@ -28,7 +28,7 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
   <img src="https://skillicons.dev/icons?i=figma" />
 </p>
 
-**No-Code
+**No-Code**
 <p align="left">
   <img src="https://skillicons.dev/icons?i=wordpress" />
 </p>
@@ -36,7 +36,7 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 **Front-end**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=,html,css,js,ts,react,nextjs,tailwind" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind" />
 </p>
 
 **Back-end & Banco de Dados**
