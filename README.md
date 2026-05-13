@@ -1,6 +1,6 @@
 # Olá, me chamo Thiago 👋🏻
 
-### 🚀 Desenvolvedor Full Stack **
+### 🚀 Desenvolvedor Full Stack 
 
 Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e resolver problemas através do código. Atualmente, meu foco é construir aplicações web modernas, responsivas e escaláveis.
 
