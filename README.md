@@ -46,7 +46,7 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 **Banco de Dados e APIs**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=mysql,firebase,supabase,fastapi,postman" />
+  <img src="https://skillicons.dev/icons?i=mysql,firebase,supabase,postman" />
 </p>
 
 ---
