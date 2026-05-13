@@ -23,7 +23,7 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 
 ### 🛠️ Minhas Tecnologias (Tech Stack)
 
-**Ferramentas de UI/UX e No-Code
+**Ferramentas de UI/UX e No-Code**
 
 <p align="left">
   <a href="https://skillicons.dev">
