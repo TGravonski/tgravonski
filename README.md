@@ -36,13 +36,19 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 **Front-end**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind" />
+  <img src="https://skillicons.dev/icons?i=html,css,js,react,ts,nextjs,tailwind" />
 </p>
 
-**Back-end & Banco de Dados**
+**Back-end**  
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,php,mysql,firebase,supabase" />
+  <img src="https://skillicons.dev/icons?i=nodejs,php" />
+</p>
+
+**Banco de Dados**
+
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=mysql,firebase,supabase" />
 </p>
 
 ---
