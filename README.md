@@ -23,7 +23,14 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 
 ### 🛠️ Minhas Tecnologias (Tech Stack)
 
-**Front-end & Design**
+**Ferramentas de UI e No-code**
+<p align="left">
+  <img src="https://skillicons.dev/icons?i=figma,wordpress" />
+  <img src="https://cdn.simpleicons.org/elementor/#E0005E" width="48" height="48" alt="elementor" />
+</p>
+
+
+**Front-end**
 
 <p align="left">
   <img src="https://skillicons.dev/icons?i=figma,html,css,js,ts,react,nextjs,tailwind,wordpress" />
