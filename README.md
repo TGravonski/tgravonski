@@ -23,16 +23,14 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
 
 ### 🛠️ Minhas Tecnologias (Tech Stack)
 
-**Ferramentas de UI/UX**
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=figma" />
-</p>
+**Ferramentas de UI/UX e No-Code
 
-**No-Code**
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=wordpress" />
-</p>
-
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=figma,wordpress,elementor" />
+  </a>
+  </p>
+  
 **Front-end**
 
 <p align="left">
@@ -45,10 +43,10 @@ Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e r
   <img src="https://skillicons.dev/icons?i=nodejs,php" />
 </p>
 
-**Banco de Dados**
+**Banco de Dados e APIs**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=mysql,firebase,supabase" />
+  <img src="https://skillicons.dev/icons?i=mysql,firebase,supabase,fastapi,postman" />
 </p>
 
 ---
