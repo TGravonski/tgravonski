@@ -2,7 +2,11 @@
 
 ### 🚀 Desenvolvedor Full Stack 
 
-Sou apaixonado por tecnologia, sempre em busca de aprender novas ferramentas e resolver problemas através do código. Atualmente, meu foco é construir aplicações web modernas, responsivas e escaláveis.
+Sou desenvolvedor de software e gosto de transformar ideias em soluções práticas e eficientes. Atualmente atuo com desenvolvimento web, APIs, integrações de sistemas e soluções ERP, buscando criar aplicações modernas, escaláveis e que realmente agreguem valor aos negócios.
+
+🎓 Bacharelando em Ciência da Computação
+
+💡 Interesse em Arquitetura de Software, Desenvolvimento Web, Integrações de Sistemas e Automação de Processos.
 
 ---
 
