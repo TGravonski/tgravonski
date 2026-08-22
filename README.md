@@ -35,7 +35,7 @@ Sou desenvolvedor de software e gosto de transformar ideias em soluções práti
 **Banco de Dados e APIs**
 
 <p align="left">
-  <img src="https://skillicons.dev/icons?i=mysql,firebase,postegresql,postman" />
+  <img src="https://skillicons.dev/icons?i=mysql,firebase,postegres,postman" />
 </p>
 
 ---
