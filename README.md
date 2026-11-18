@@ -1,57 +1,40 @@
-# Olá, me chamo Thiago 👋🏻
+# Thiago Gravonski
 
-### 🚀 Desenvolvedor Full Stack 
+**Desenvolvedor de Software** | Bacharel em Ciência da Computação
 
-Sou desenvolvedor de software e gosto de transformar ideias em soluções práticas e eficientes. Atualmente atuo com desenvolvimento web, APIs, integrações de sistemas e soluções ERP, buscando criar aplicações modernas, escaláveis e que realmente agreguem valor aos negócios.
-
-🎓 Bacharel em Ciência da Computação
-
-💡 Interesse em Arquitetura de Software, Desenvolvimento Web, Integrações de Sistemas e Automação de Processos.
+Desenvolvedor de software com foco em aplicações web, APIs, integrações de sistemas e soluções ERP. Busco construir soluções escaláveis, de fácil manutenção e alinhadas às necessidades do negócio.
 
 ---
 
-### 🛠️ Minhas Tecnologias (Tech Stack)
+## Áreas de Atuação
 
-**Ferramentas de UI/UX e No-Code**
-
-<p align="left">
-  <a href="https://skillicons.dev">
-    <img src="https://skillicons.dev/icons?i=figma,wordpress,elementor" />
-  </a>
-  </p>
-  
-**Front-end**
-
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=html,css,js,react,ts,nextjs,tailwind" />
-</p>
-
-**Back-end**  
-
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=nodejs,php" />
-</p>
-
-**Banco de Dados e APIs**
-
-<p align="left">
-  <img src="https://skillicons.dev/icons?i=mysql,firebase,postgres,postman" />
-</p>
+- Desenvolvimento web (front-end e back-end)
+- Projeto e desenvolvimento de APIs
+- Integração de sistemas e soluções ERP
+- Automação de processos
+- Arquitetura de software
 
 ---
 
-### 🌐 Vamos nos conectar?
+## Stack Tecnológica
 
-<p align="left">
-  <a href="https://www.linkedin.com/in/thiago-gravonski/" target="_blank">
-    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />
-  </a>
-  <a href="https://www.instagram.com/thiago_gravonski/" target="_blank">
-    <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
-  </a>
-  <a href="mailto:tgravonski@gmail.com">
-    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
-  </a>
-</p>
+| Categoria | Tecnologias |
+|---|---|
+| **Front-end** | <img src="https://skillicons.dev/icons?i=html,css,js,ts,react,nextjs,tailwind" /> |
+| **Back-end** | <img src="https://skillicons.dev/icons?i=nodejs,php" /> |
+| **Banco de Dados** | <img src="https://skillicons.dev/icons?i=mysql,postgres,firebase" /> |
+| **APIs e Testes** | <img src="https://skillicons.dev/icons?i=postman" /> |
+| **Design e No-Code** | <img src="https://skillicons.dev/icons?i=figma,wordpress,elementor" /> |
 
-- 📧 **Entre em contato:** <a href="mailto:tgravonski@gmail.com">tgravonski@gmail.com</a>
+---
+
+## Contato
+
+<a href="https://www.linkedin.com/in/thiago-gravonski/" target="_blank">
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" />
+</a>
+<a href="mailto:tgravonski@gmail.com">
+  <img src="https://img.shields.io/badge/E--mail-333333?style=flat-square&logo=gmail&logoColor=white" />
+</a>
+
+**E-mail:** [tgravonski@gmail.com](mailto:tgravonski@gmail.com)
